@@ -304,7 +304,8 @@ div.datepicker span.dateRangeSeparator {
   color: #898989;
 }
 
-div.datepickerInput {
+.datepickerInput {
+  display: inline-block;
   position: relative;
   padding: 5px 25px 5px 5px;
   font-size: 16px;
@@ -317,11 +318,11 @@ div.datepickerInput {
   text-align: center;
 }
 
-div.datepickerInput:hover {
+.datepickerInput:hover {
   border-color: #AAA;
 }
 
-div.datepickerInput span.date-arrow {
+.datepickerInput span.date-arrow {
   display: block;
   position: absolute;
   top: 5px;
