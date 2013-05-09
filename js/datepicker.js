@@ -786,8 +786,8 @@
        * Format a date as "Mar 18, 1983"
        */
       formattedDate = function(dt) {
-        return (dt.getDate() + " " +
-                dt.getMonthName(false) + ", " +
+        return (dt.getMonthName(false) + " " +
+                dt.getDate() + ", " +
                 dt.getFullYear());
       },
 
