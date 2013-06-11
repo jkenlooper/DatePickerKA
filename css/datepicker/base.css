@@ -236,11 +236,6 @@ tbody.datepickerDays td.datepickerSelected {
   background-color:#0077CC;
 }
 
-/* Grey out dates in the future */
-div.datepicker td.datepickerFuture a {
-  color:#DDDDDD;
-}
-
 /* Grey out disabled dates */
 div.datepicker td.datepickerDisabled a {
   color:#DDDDDD;

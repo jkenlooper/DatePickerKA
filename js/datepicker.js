@@ -198,6 +198,10 @@
          */
         disableFuture: false,
         /**
+         * True if past dates should be unselectable/disabled.
+         */
+        disablePast: false,
+        /**
          * Additional controls to be added on right-side of the calendar UI.
          * This is a dict that defines what controls to add and supports the
          * following: {
@@ -429,6 +433,14 @@
                 data.weeks[indic].days[indic2].classname.push('datepickerDisabled');
               }
             }
+
+            if (date < today) {
+              // current month, date in past
+              data.weeks[indic].days[indic2].classname.push('datepickerPast');
+              if (options.disablePast) {
+                data.weeks[indic].days[indic2].classname.push('datepickerDisabled');
+              }
+            }
             
             if (month != date.getMonth()) {
               data.weeks[indic].days[indic2].classname.push('datepickerNotInMonth');
@@ -585,11 +597,23 @@
                   // Don't allow selection of future dates
                   tmp = new Date();
                 }
+                if (options.disablePast && tmp < today) {
+                  // Don't allow selection of past dates
+                  tmp = new Date();
+                  tmp.addDays(1);
+                }
                 options.date[0] = (tmp.setHours(0,0,0,0)).valueOf();
                 tmp.addDays(tmp.getMaxDays()-1);
                 if (options.disableFuture && tmp > today) {
                   // Don't allow selection of future dates
                   tmp = new Date();
+                }
+                if (options.disablePast) {
+                  tmp = new Date(options.date[0]);
+                  // jump to end of the month
+                  tmp.addMonths(1);
+                  tmp.setDate(1);
+                  tmp.addDays(-1);
                 }
                 tmp.setHours(23,59,59,0);
 
