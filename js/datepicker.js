@@ -376,6 +376,10 @@
             return millis >= 0 && millis < (options.maxRange * 24 * 60 * 60 * 1000);
           }
         }
+        if (options.disablePast) {
+          // Start the calendar at the current month
+          currentCal = 0;
+        }
         
         cal.find('td>table tbody').remove();
         for(var i = 0; i < options.calendars; i++) {
@@ -582,6 +586,11 @@
           var fillIt = false;
           var currentCal = Math.floor(options.calendars/2);
           var today = new Date();
+
+          if (options.disablePast) {
+            // Start the calendar at the current month
+            currentCal = 0;
+          }
           
           if (parentEl.is('th')) {
             // clicking the calendar title
